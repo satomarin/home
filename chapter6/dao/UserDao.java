@@ -1,8 +1,13 @@
 package chapter6.dao;
 
-import java.io.ByteArrayInputStream;
+import static chapter6.utils.CloseableUtil.*;
+
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import chapter6.beans.User;
+import chapter6.exception.SQLRuntimeException;
 
 public class UserDao {
 
@@ -12,23 +17,21 @@ public class UserDao {
 		try{
 			StringBuilder sql = new StringBuilder();
 			sql.append("INSERT INTO user ( ");
-			sql.append("id");
-			sql.append(", account");
+			//sql.append("id");
+			sql.append(" account");
 			sql.append(", name");
 			sql.append(", email");
 			sql.append(", password");
 			sql.append(", description");
-			sql.append(", icon");
 			sql.append(", insert_date");
 			sql.append(", update_date");
 			sql.append(") VALUES (");
-			sql.append("NEXT VALUE FOR my_seq "); // id
-			sql.append(", ?"); // account
+			//sql.append("NEXT VALUE FOR my_seq "); // id
+			sql.append(" ?"); // account
 			sql.append(", ?"); // name
 			sql.append(", ?"); // email
 			sql.append(", ?"); // password
 			sql.append(", ?"); // description
-			sql.append(", ?"); // icon
 			sql.append(", CURRENT_TIMESTAMP"); // insert_date
 			sql.append(", CURRENT_TIMESTAMP"); // update_date
 			sql.append(")");
@@ -40,11 +43,8 @@ public class UserDao {
 			ps.setString(3, user.getEmail());
 			ps.setString(4, user.getPassword());
 			ps.setString(5, user.getDescription());
-			if (user.getIcon() == null) {
-				ps.setObject(6, null);
-			} else {
-				ps.setBinaryStream(6, new ByteArrayInputStream(user.getIcon()));
-			}
+
+			//System.out.println(ps.toString());
 
 			ps.executeUpdate();
 		} catch (SQLException e) {

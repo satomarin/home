@@ -23,7 +23,7 @@ public class CipherUtil {
 
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
-			md.update(target.getByte());
+			md.update(target.getBytes());
 			return Base64.encodeBase64URLSafeString(md.digest());
 		} catch (NoSuchAlgorithmException e){
 			throw new RuntimeException(e);

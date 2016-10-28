@@ -18,8 +18,8 @@ import chapter6.service.UserService;
 
 @WebServlet(urlPatterns = { "/signup" })
 
-public class SignUpServlet extends HttpSevlet {
-	private stativ final long serialVersionUID = 1L;
+public class SignUpServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
@@ -40,6 +40,9 @@ public class SignUpServlet extends HttpSevlet {
 			user.setPassword(request.getParameter("password"));
 			user.setEmail(request.getParameter("email"));
 			user.setDescription(request.getParameter("description"));
+
+			System.out.println(request.getParameter("account"));
+			System.out.println(user.getAccount());
 
 			new UserService().register(user);
 
