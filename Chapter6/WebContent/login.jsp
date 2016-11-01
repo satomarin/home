@@ -25,13 +25,14 @@
 
 <form action="login" method="post"><br />
 	<label for="accountOrEmail">アカウント名かメールアドレス</label>
-	<input name="accountOrEmail" id="accountOrEmail"/> <br />
+	<input name="accountOrEmail" value="${accountOrEmail}" id="accountOrEmail"/> <br />
 
 	<label for="password">パスワード</label>
 	<input name="password" type="password" id="password"/> <br />
 
 	<input type="submit" value="ログイン" /> <br />
 	<a href="./">戻る</a>
+	<c:remove var="accountOrEmail" scope="session"/>
 </form>
 <div class="copyright">Copyright(c)Sato Marin</div>
 </div>

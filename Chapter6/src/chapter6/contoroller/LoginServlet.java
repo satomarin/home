@@ -18,33 +18,47 @@ import chapter6.service.LoginService;
 @WebServlet(urlPatterns = { "/login" })
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Override
 	protected void doGet(javax.servlet.http.HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
-	
+
+
+
 	@Override
 	protected void doPost(HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws IOException, ServletException {
 		String accountOrEmail = request.getParameter("accountOrEmail");
 		String password = request.getParameter("password");
-		
+
+
 		LoginService loginService = new LoginService();
 		User user = loginService.login(accountOrEmail, password);
-		
+
 		HttpSession session = request.getSession();
+
+
+
 		if(user != null){
 			session.setAttribute("loginUser", user);
 			response.sendRedirect("./");
-			
+
+
 		}else{
-			
+
 			List<String> messages = new ArrayList<String>();
 			messages.add("ログインに失敗しました。");
 			session.setAttribute("errorMessages", messages);
+
+			//応用4
+			session.setAttribute("accountOrEmail", accountOrEmail);
+
 			response.sendRedirect("login");
+
 		}
-		
+
 	}
 
 }

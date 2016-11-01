@@ -35,8 +35,7 @@ public class UserMessageDao {
 		}
 	}
 
-	private List<UserMessage> toUserMessageList(ResultSet rs)
-			throws SQLException {
+	private List<UserMessage> toUserMessageList(ResultSet rs)throws SQLException {
 
 		List<UserMessage> ret = new ArrayList<UserMessage>();
 		try {

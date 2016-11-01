@@ -30,8 +30,15 @@ public class SignUpServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
 
 		List<String> messages = new ArrayList<String>();
+		//応用4
+		String name = (request.getParameter("name"));
+		String account = (request.getParameter("account"));
+		String email = (request.getParameter("email"));
+		String description = (request.getParameter("description"));
 
 		HttpSession session = request.getSession();
+
+
 		if (isValid(request, messages) == true) {
 
 			User user = new User();
@@ -49,6 +56,13 @@ public class SignUpServlet extends HttpServlet {
 			response.sendRedirect("./");
 		} else {
 			session.setAttribute("errorMessages", messages);
+
+			//応用4
+			session.setAttribute("name", name);
+			session.setAttribute("account", account);
+			session.setAttribute("email", email);
+			session.setAttribute("description", description);
+
 			response.sendRedirect("signup");
 		}
 	}

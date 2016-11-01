@@ -9,6 +9,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>簡易Twitter</title>
 	<link href="./css/style.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 <div class="main-contents">
@@ -43,7 +44,7 @@
 			いま、どうしてる？<br />
 			<textarea name="message" cols="100" rows="5" class="tweet-box"></textarea>
 			<br />
-			<input type="submit" value="つぶやく" ">（140文字まで）
+			<input type="submit" value="つぶやく"">(140文字まで)
 		</form>
 	</c:if>
 </div>
@@ -51,7 +52,6 @@
 <div class="messages">
 	<c:forEach items="${messages}" var="message">
 		<div class="message-icon">
-			<div class="icon"><img src="./icon?user_id=${message.userId}" width="50" height="50"  /></div>
 			<div class="message">
 				<div class="account-name">
 					<span class="account"><c:out value="${message.account}" /></span>
@@ -64,7 +64,7 @@
 	</c:forEach>
 </div>
 
-<div class="copyright">Copyright(c)Sato Marin</div>
+<div class="copyright">Copyright(c)Marin Sato</div>
 </div>
 </body>
 </html>

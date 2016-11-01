@@ -23,24 +23,30 @@
 </c:if>
 <form action="signup" method="post"><br />
 	<label for="name">名前</label>
-	<input name="name" id="name"/>（名前はあなたの公開プロフィールに表示されます）<br />
+	<input name="name" id="name" value="${name}"/>（名前はあなたの公開プロフィールに表示されます）<br />
 
 	<label for="account">アカウント名</label>
-	<input name="account" id="account"/>（あなたの公開プロフィール: http://localhost:8080/Chapter6/?account=アカウント名）<br />
+	<input name="account" id="account"value="${account}"/>（あなたの公開プロフィール: http://localhost:8080/Chapter6/?account=アカウント名）<br />
 
 	<label for="password">パスワード</label>
 	<input name="password" type="password" id="password"/> <br />
 
 	<label for="email">メールアドレス</label>
-	<input name="email" id="email"/> <br />
+	<input name="email" id="email" value="${email}"/> <br />
 
 	<label for="description">説明</label>
-	<textarea name="description" cols="35" rows="5" id="description"></textarea> <br />
+	<textarea name="description" cols="35" rows="5" id="description" >${description}</textarea>
 
 	<input type="submit" value="登録" /> <br />
 	<a href="./">戻る</a>
+
+	<c:remove var="name" scope="session"/>
+	<c:remove var="account" scope="session"/>
+	<c:remove var="email" scope="session"/>
+	<c:remove var="description" scope="session"/>
+
 </form>
-<div class="copyright">Copyright(c)Sato marin</div>
+<div class="copyright">Copyright(c)Marin Sato</div>
 </div>
 </body>
 </html>

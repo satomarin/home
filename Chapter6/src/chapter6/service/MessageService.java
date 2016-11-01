@@ -20,7 +20,9 @@ public class MessageService {
 			connection = getConnection();
 
 			MessageDao messageDao = new MessageDao();
+
 			messageDao.insert(connection, message);
+
 
 			commit(connection);
 		} catch (RuntimeException e) {
@@ -33,7 +35,7 @@ public class MessageService {
 			close(connection);
 		}
 	}
-	
+
 	private static final int LIMIT_NUM = 1000;
 
 	public List<UserMessage> getMessage() {
